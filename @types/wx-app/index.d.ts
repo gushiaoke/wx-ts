@@ -623,7 +623,7 @@ declare namespace WeApp {
     interface SaveFileParam extends CallbackParam {
         /**需要保存的文件的临时路径 */
         tempFilePath: string;
-        success?: (res?: { savedFilePath?: string }) => void;
+        success?: (res: { savedFilePath?: string }) => void;
     }
 
     interface FileListParam extends CallbackParam {
@@ -719,7 +719,7 @@ declare namespace WeApp {
     interface GetStorageParam extends CallbackParam {
         /**本地缓存中的指定的 key */
         key: string;
-        success: (res?: { data: any }) => void;
+        success: (res: { data: any }) => void;
     }
 
     interface RemoveStorageParam extends CallbackParam {
@@ -807,8 +807,10 @@ declare namespace WeApp {
         longitude: number
     }
 
+    type NetworkType = '2g' | '3g' | '4g' | 'wifi' | 'unknown' | 'none'
+
     interface NetworkTypeParam extends CallbackParam {
-        success: (res?: { /**返回网络类型2g|3g|4g|wifi */networkType: string }) => void;
+        success: (res: { /**返回网络类型2g|3g|4g|wifi */networkType: NetworkType }) => void;
     }
 
     interface SystemInfoParam extends CallbackParam {
@@ -1300,12 +1302,21 @@ declare namespace WeApp {
         withCredentials?: boolean;
         /**指定返回用户信息的语言 zh_CN 简体中文 zh_TW 繁体中文 en 英文 */
         lang?: string;
-        success?: (res?: UserInfo) => void;
+        success?: (res: UserInfo) => void;
+    }
+
+    interface UserInfoDetail {
+        nickName: string;
+        avatarUrl: string;
+        gender: number;
+        province: string;
+        city: string;
+        country: string;
     }
 
     interface UserInfo {
         /**	用户信息对象 不包含 openid 等敏感信息 */
-        userInfo: Object;
+        userInfo: UserInfoDetail;
         /**不包括敏感信息的原始数据字符串 用于计算签名 */
         rawData: string;
         /**使用sha1(rawData + sessionkey) 得到字符串 用于校验用户信息 */
