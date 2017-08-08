@@ -4,17 +4,21 @@
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build",
+    "watch": "concurrently --kill-others \"gulp watch\" \"tsc -w\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^3.5.0",    
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.2.1",
     "typescript": "^2.4.2"
   },
   "dependencies": {
-    "typed-we-app": "^1.4.3"
+    "gulp-clean": "^0.3.2",
+    "gulp-watch": "^4.3.11"
   }
 }
