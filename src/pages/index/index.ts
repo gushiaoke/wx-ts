@@ -1,6 +1,8 @@
 // index.js
 // 获取应用实例
-let app = getApp();
+import * as wxasync from '../../utils/wx-wrapper';
+
+const app = getApp();
 
 interface IIndexPageParam extends WeApp.PageParam {
     test: () => void;
@@ -20,9 +22,15 @@ PageIndex({
             url: '../logs/logs',
         });
     },
-    onLoad() {
+    async onLoad() {
         console.log('onLoad');
         this.test();
+
+        const userInfo = await wxasync.getUserInfo();
+        console.log({userInfo});
+        (this as WeApp.Page).setData({
+            userInfo,
+        });
     },
 
     test() {

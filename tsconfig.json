@@ -1,11 +1,15 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es6",
+        "target": "es5",
         "strict": true,
         "outDir": "dist",
         "inlineSourceMap": true,
-        "typeRoots" : ["./@types"]
+        "typeRoots" : ["./@types"],
+        "lib": [
+            "es2015"
+        ],
+        "sourceRoot": "./src"
     },
     "exclude": [
         "node_modules"

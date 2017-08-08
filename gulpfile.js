@@ -37,3 +37,4 @@ gulp.task('watch-res', () => {
 });
 
 gulp.task('watch', ['watch-res']);
+gulp.task('build', ['compile', 'res']);

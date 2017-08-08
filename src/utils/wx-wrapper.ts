@@ -1,7 +1,7 @@
 'use strict';
 
 export async  function login() {
-    return new Promise((resolve, reject) => {
+    return new Promise<WeApp.LoginResult>((resolve, reject) => {
         wx.login({
             success: (res) => resolve(res),
             fail: () => reject(`wx.login failed`),
@@ -15,13 +15,13 @@ export async  function getUserInfo() {
     if (userInfo) {
         return userInfo;
     }
-    return new Promise((resolve, reject) => {
+    return new Promise<WeApp.UserInfoDetail>((resolve, reject) => {
         wx.getUserInfo({
             success: (res) => {
                 if (res.userInfo) {
                     userInfo = res.userInfo;
                 }
-                resolve(res);
+                resolve(res.userInfo);
             },
             fail: (err) => reject({
                 err,
@@ -98,11 +98,11 @@ export async  function request(url: string, header?: object) {
 }
 
 export async  function sleep(t: number) {
-    return new Promise((resolve) => setTimeout(resolve, t));
+    return new Promise<void>((resolve) => setTimeout(resolve, t));
 }
 
 export async  function saveFile(filePath: string) {
-    return new Promise((resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
         wx.saveFile({
             tempFilePath: filePath,
             success(res) {
@@ -197,7 +197,7 @@ export async  function showActionSheet(itemList: string[]) {
 }
 
 export async  function getNetworkType() {
-    return new Promise((resolve, reject) => {
+    return new Promise<WeApp.NetworkType>((resolve, reject) => {
         wx.getNetworkType({
             success: (res) => resolve(res.networkType),
             fail: (err) => reject({

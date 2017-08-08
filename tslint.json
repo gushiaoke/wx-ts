@@ -15,7 +15,8 @@
         "no-unused-expression": [
             false
         ],
-        "no-console": [false]
+        "no-console": [false],
+        "no-bitwise": false
     },
     "rulesDirectory": []
 }

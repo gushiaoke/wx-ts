@@ -12,6 +12,26 @@ declare function getCurrentPages(): void;
 
 declare var wx: WeApp.wx;
 
+interface Console {
+    assert(value: any, message?: string, ...optionalParams: any[]): void;
+    error(message?: any, ...optionalParams: any[]): void;
+    info(message?: any, ...optionalParams: any[]): void;
+    log(message?: any, ...optionalParams: any[]): void;
+    time(label: string): void;
+    timeEnd(label: string): void;
+    trace(message?: any, ...optionalParams: any[]): void;
+    warn(message?: any, ...optionalParams: any[]): void;
+}
+
+declare var console: Console;
+
+declare function setTimeout(callback: (...args: any[]) => void, ms: number, ...args: any[]): number;
+declare function clearTimeout(timeoutId: number): void;
+declare function setInterval(callback: (...args: any[]) => void, ms: number, ...args: any[]): number;
+declare function clearInterval(intervalId: number): void;
+declare function setImmediate(callback: (...args: any[]) => void, ...args: any[]): any;
+declare function clearImmediate(immediateId: any): void;
+
 declare namespace WeApp {
 
     /**指定小程序的生命周期函数等 */
@@ -70,7 +90,7 @@ declare namespace WeApp {
 
         /**开发者可以添加任意的函数或数据到参数中 用 this 可以访问 */
         // [others: string]: any;
- 
+        setData?: (param: PageSetDataParam) => void;
     }
 
     interface PageSetDataParam {
@@ -1833,7 +1853,7 @@ declare namespace WeApp {
         fields(fields: NodeField, callback: (res: any) => void): SelectorQuery;
     }
 
-    interface WxClientRect extends ClientRect {
+    interface WxClientRect /*extends ClientRect*/ {
         id: string;
         dataset: any;
     }
