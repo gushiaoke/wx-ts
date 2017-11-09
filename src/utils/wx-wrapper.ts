@@ -79,7 +79,7 @@ export async  function download(url: string, header?: object) {
     });
 }
 
-export async  function request(url: string, header?: object) {
+export async  function request(url: string, header?: object, data?: object, method?: string) {
     return new Promise((resolve, reject) => {
         // console.log({
         //     url,
@@ -88,6 +88,8 @@ export async  function request(url: string, header?: object) {
         wx.request({
             url,
             header,
+            data,
+            method,
             success: (res) => resolve(res),
             fail: (res) => {
                 console.error({res});

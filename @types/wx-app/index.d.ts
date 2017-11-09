@@ -1332,6 +1332,7 @@ declare namespace WeApp {
         province: string;
         city: string;
         country: string;
+        language: string;
     }
 
     interface UserInfo {
