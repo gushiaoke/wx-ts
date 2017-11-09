@@ -42,8 +42,8 @@ export async  function setStorage(key: string, value: any) {
     });
 }
 
-export async  function getStorage(key: string, defaultValue: any) {
-    return new Promise((resolve, reject) => {
+export async  function getStorage<T>(key: string, defaultValue: any) {
+    return new Promise<T>((resolve, reject) => {
         wx.getStorage({
             key,
             success: (res) => resolve(res.data),
@@ -79,8 +79,9 @@ export async  function download(url: string, header?: object) {
     });
 }
 
-export async  function request(url: string, header?: object, data?: object, method?: string) {
-    return new Promise((resolve, reject) => {
+export async  function request(url: string,
+                               header?: object, data?: object, method?: string): Promise<WeApp.HttpResponse> {
+    return new Promise<WeApp.HttpResponse>((resolve, reject) => {
         // console.log({
         //     url,
         //     header
