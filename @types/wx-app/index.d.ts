@@ -1452,7 +1452,7 @@ declare namespace WeApp {
     }
 
     /**自定以分享内容 */
-    interface PageShareData extends CallbackWithErrMsgParam {
+    interface PageShareData {
         /**分享标题 默认 当前小程序名称 */
         title?: string;
         /**分享描述 默认 当前小程序名称 */
@@ -1460,6 +1460,10 @@ declare namespace WeApp {
         /**分享路径 当前页面 path 必须是以 / 开头的完整路径 */
         path?: string;
         success?: (res: { errMsg: string; shareTickets: Array<string> }) => void;
+
+        fail?: (res?: any) => void;
+        /**接口调用结束的回调函数(调用成功/失败都会执行) */
+        complete?: Function;
     }
 
     interface BluetoothAdapterStateParam extends CallbackParam {

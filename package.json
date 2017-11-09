@@ -12,13 +12,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^3.5.0",    
+    "concurrently": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.2.1",
     "typescript": "^2.4.2"
   },
   "dependencies": {
     "gulp-clean": "^0.3.2",
-    "gulp-watch": "^4.3.11"
+    "gulp-watch": "^4.3.11",
+    "tslint": "^5.8.0"
   }
 }
